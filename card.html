@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <style>
+   .section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color:aqua;
+    border-radius:20px 20px 20px 20px;
+}
+
+.section.dark {
+    background: #eee;
+}
+
+.section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.parent-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.skill {
+    padding: 10px 20px;
+    background: #00c8ff;
+    color: #fff;
+    border-radius: 4px;
+}
+@media (max-width: 768px) {
+    .parent-container,
+    .skills-container {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+    </style>
+    <section  id="parent" class="section">
+    <div class="parent-container">
+            <div class="skill">card1</div>
+            <div class="skill">card2</div>
+            <div class="skill">card 3</div>
+            <div class="skill">card 4</div>
+            <div class="skill">card 6</div>
+    </div>
+    </section>
+</body>
+</html>
