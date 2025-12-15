@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input1" type="text" placeholder="enter something" />
+     <input type="submit" onclick="add()" value="ADD" />
+     <p id="list"> </p>
+     <script>
+        function add()
+{
+    let a=document.getElementById("input1").value;
+    localStorage.setItem("items",a);
+   let div= document.createElement("div");
+   div.textContent= localStorage.getItem("items");
+   document.getElementById("list").appendChild(div);
+}
+     </script>
+</body>
+</html>

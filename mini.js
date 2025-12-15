@@ -69,7 +69,7 @@ const arr=[
       { "color": "Pink", "quantity": 12 }
     ]
   }
-];
+]
 // 1. search by  product name
 // 2. Check if any product out of stock
 // 3. Check if all electronics > $20
@@ -78,35 +78,46 @@ const arr=[
 // 6. find total stock 
 // 7. Remove or insert products
 // 8. filter by electronics category
+
 //1
-const search=arr.filter(n=>n.name==="Cotton Hoodie");
-console.log(search);
+const searchByName = arr.filter(n=>n.name==="Smart Watch");
+console.log(searchByName);
 //2
-const product=arr.some(n=>n.inStock===false);
-console.log("out of stock",product);
+const isOutofStock = arr.some(n=>n.inStock===false);
+console.log(isOutofStock);
 //3
-const electronics=arr.some(n=>n.price>20);
-console.log(electronics);
+const allElectronicsAbove20 = arr.filter(n=>n.category==="Electronics").every(n=>n.price>20);
+console.log(allElectronicsAbove20);
 //4
-const sortbyprice=arr.sort((item1,item2)=>item1.price-item2.price);
-console.log(sortbyprice);
-
+const sortByPrice = arr.slice().sort((a,b)=>a.price-b.price);
+console.log(sortByPrice);
 //5
-const sortbyrating=arr.sort((item1,item2)=>item1.rating-item2.rating);
-console.log(sortbyrating);
-
+const sortByRating = arr.slice().sort((a,b)=>b.rating-a.rating); 
+console.log(sortByRating);
 //6
-const totalstock=arr.reduce(function(item,count=0)
-{
-    if(item.inStock===true)
-    {
-        count++;
-    }
-    return count;
-});
-
-
-
-
+const totalStock = arr.reduce((total,product)=>{
+  const productStock = product.variants.reduce((sum,variant)=>sum + variant.quantity,0);
+  return total + productStock;
+},0);
+console.log(totalStock);
 //7
-arr.push()
+// Remove product with id 4
+const removeProduct = arr.filter(n=>n.id!==4);
+console.log(removeProduct);
+// Insert new product
+const newProduct = {
+  "id": 6,
+  "name": "Bluetooth Speaker",
+  "category": "Electronics",
+  "price": 45.0,
+  "discount": 10,
+  "rating": 4.5,
+  "inStock": true,
+  "tags": ["speaker", "bluetooth", "audio"],
+  "variants": [
+    { "color": "Black", "quantity": 20 },
+    { "color": "Blue", "quantity": 15 }
+  ]
+};
+const updatedArr = [...removeProduct, newProduct];
+console.log(updatedArr);
